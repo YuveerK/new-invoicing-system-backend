@@ -12,6 +12,10 @@ app.use(cors({ origin: ENV.CORS_ORIGINS }));
 // Multer for memory storage
 const upload = multer({ storage: multer.memoryStorage() });
 
+app.get("/", (req, res) => {
+  res.status(200).json("API WORKING!");
+});
+
 // Route for sending invoice email
 app.post("/send-invoice", upload.single("file"), async (req, res) => {
   if (!req.file) {
